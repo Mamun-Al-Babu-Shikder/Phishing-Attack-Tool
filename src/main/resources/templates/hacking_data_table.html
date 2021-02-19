@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<table id="data_table" class="table table-striped">
+    <tr>
+        <th>SL No.</th>
+        <th>Track ID</th>
+        <th>Type</th>
+        <th>Redirect URL</th>
+        <th>Attacking URL</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="row, loop : ${data}">
+        <td>[[${loop.count}]]</td>
+        <td>[[${row.trackId}]]</td>
+        <td>[[${row.type}]]</td>
+        <td><a target="_blank" th:href="${row.redirectUrl}">[[${row.redirectUrl}]]</a> </td>
+        <td><a target="_blank" th:href="${row.attackingUrl}">[[${row.attackingUrl}]]</a> </td>
+        <td>
+            <a th:onclick="deleteHackingData([[${row.trackId}]], [[${row.type}]])"  class="btn btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

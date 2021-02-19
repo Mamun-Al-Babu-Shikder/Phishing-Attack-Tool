@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div  class="table-responsive">
+<table class="table table-striped">
+    <tr>
+        <th class="pt-2">
+            <div class="custom-checkbox custom-checkbox-table custom-control">
+                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
+                       class="custom-control-input" id="checkbox-all">
+                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+            </div>
+        </th>
+        <th>SL No.</th>
+        <th>Date</th>
+        <th>Track ID</th>
+        <th>Account</th>
+        <th>Password</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="row, loop : ${data.content}">
+        <td>
+            <div class="custom-checkbox custom-control">
+                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                       th:id="'checkbox-2'+${loop.count}">
+                <label th:for="'checkbox-2'+${loop.count}" class="custom-control-label">&nbsp;</label>
+            </div>
+        </td>
+        <td>[[${loop.count}]]</td>
+        <td>[[${row.time}]]</td>
+        <td>[[${row.trackId}]]</td>
+        <td>[[${row.email}]]</td>
+        <td>[[${row.password}]]</td>
+        <td>
+            <a th:onclick="deleteVictimAccountInfo([[${row.id}]])"  class="btn btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+</table>
+</div>
+<div class="float-right">
+    <nav>
+        <ul class="pagination">
+<!--            <li class="page-item disabled">-->
+<!--                <a class="page-link" href="#" aria-label="Previous">-->
+<!--                    <span aria-hidden="true">&laquo;</span>-->
+<!--                    <span class="sr-only">Previous</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+            <th:block th:each="i: ${#numbers.sequence(0, data.totalPages-1, 1)}">
+                <li  class="page-item" th:classappend="${i==data.number}? 'active' : ''">
+                    <button class="page-link" th:onclick="showPage([[${i}]])">[[${i+1}]]</button>
+                </li>
+            </th:block>
+
+
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="#">2</a>-->
+<!--            </li>-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="#">3</a>-->
+<!--            </li>-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="#" aria-label="Next">-->
+<!--                    <span aria-hidden="true">&raquo;</span>-->
+<!--                    <span class="sr-only">Next</span>-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+    </nav>
+</div>
+</html>
+
+
